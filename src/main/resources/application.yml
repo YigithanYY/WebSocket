@@ -1,0 +1,13 @@
+server:
+  port: 8088
+
+  spring:
+    data:
+      mongodb:
+        host: localhost             # MongoDB sunucu adresi
+        port: 27017                 # MongoDB sunucu portu
+        database: chat_app    # Kullanmak istediğiniz MongoDB veritabanı adı
+        username: yigit    # MongoDB kullanıcı adı (opsiyonel, kullanılmayacaksa silin)
+        password: yigit     # MongoDB şifre (opsiyonel, kullanılmayacaksa silin)
+    application:
+      name: websocket  # Uygulama adınızı belirtin

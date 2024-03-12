@@ -13,7 +13,6 @@ import java.util.List;
 
 @Controller
 public class UserController {
-
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -22,24 +21,19 @@ public class UserController {
 
     @MessageMapping("/user.addUser")
     @SendTo("/user/public")
-    public User addUser(
-            @Payload User user
-    ) {
+    public void addUser(@Payload User user) {
         userService.saveUser(user);
-        return user;
     }
+
 
     @MessageMapping("/user.disconnectUser")
     @SendTo("/user/public")
-    public User disconnectUser(
-            @Payload User user
-    ) {
+    public void disconnectUser(@Payload User user) {
         userService.disconnect(user);
-        return user;
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> findConnectedUsers() {
+    public ResponseEntity<List<User>>findConnectedUsers() {
         return ResponseEntity.ok(userService.findConnectedUsers());
     }
 }
